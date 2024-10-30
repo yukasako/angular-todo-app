@@ -1,0 +1,18 @@
+<div class="backdrop" (click)="toggleDialog()"></div>
+<dialog open>
+  <form>
+    <div class="input">
+      <label for="title">Todo Title</label>
+      <input type="text" id="title" name="title" />
+    </div>
+    <div class="input">
+      <label for="summary">Task Title</label>
+      <textarea id="summary" rows="5" name="summary"></textarea>
+    </div>
+    <div class="input">
+      <label for="date">Due date</label>
+      <input type="date" id="due-date" name="due-date" />
+    </div>
+    <button (click)="toggleDialog()">Close</button>
+  </form>
+</dialog>
