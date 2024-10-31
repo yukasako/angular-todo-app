@@ -15,4 +15,7 @@ export class AppComponent {
   get openDialog(): boolean {
     return this.todoService.openDialog;
   }
+  createTodo() {
+    this.todoService.openDialog = true;
+  }
 }
