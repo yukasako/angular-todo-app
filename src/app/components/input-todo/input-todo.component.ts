@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { TodoService } from '../../service/todo.service';
 
 @Component({
@@ -13,4 +14,7 @@ export class InputTodoComponent {
   toggleDialog() {
     this.todoService.openDialog = !this.todoService.openDialog;
   }
+
+  inputTitle = '';
+  inputDescription = '';
 }

@@ -1,9 +1,9 @@
 <div class="todoList">
-  <p class="listTitle">List title</p>
-  <div class="renderTodos">
-    <app-todo></app-todo>
-    <app-todo></app-todo>
-    <app-todo></app-todo>
-  </div>
+  <p class="listTitle">{{ todoList?.listName }}</p>
+  <ul class="renderTodos">
+    @for (todo of todoList?.todos; track $index) {
+    <app-todo [id]="todo.id" [listId]="listId"></app-todo>
+    }
+  </ul>
   <button class="addTodoBtn" (click)="addTodo()">Add Todos</button>
 </div>

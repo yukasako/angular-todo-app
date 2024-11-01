@@ -9,7 +9,9 @@ export class TodoService {
   // Dialogの開閉
   openDialog = false;
 
-  private todoLists = [
+  test = 'test';
+
+  public todoLists = [
     {
       listId: 1,
       listName: 'Todo',

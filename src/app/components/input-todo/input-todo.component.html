@@ -3,15 +3,16 @@
   <form>
     <div class="input">
       <label for="title">Todo Title</label>
-      <input type="text" id="title" name="title" />
+      <input type="text" id="title" name="title" [(ngModel)]="inputTitle" />
     </div>
     <div class="input">
-      <label for="summary">Task Title</label>
-      <textarea id="summary" rows="5" name="summary"></textarea>
-    </div>
-    <div class="input">
-      <label for="date">Due date</label>
-      <input type="date" id="due-date" name="due-date" />
+      <label for="summary">Descriptions</label>
+      <textarea
+        id="summary"
+        rows="5"
+        name="summary"
+        [(ngModel)]="inputDescription"
+      ></textarea>
     </div>
     <button (click)="toggleDialog()">Close</button>
   </form>

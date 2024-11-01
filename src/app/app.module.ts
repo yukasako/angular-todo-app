@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
@@ -13,6 +14,6 @@ import { InputTodoComponent } from './components/input-todo/input-todo.component
     InputTodoComponent,
   ],
   bootstrap: [AppComponent],
-  imports: [BrowserModule],
+  imports: [BrowserModule, FormsModule],
 })
 export class AppModule {}

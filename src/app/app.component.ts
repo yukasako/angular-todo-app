@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TodoService } from './service/todo.service';
+import { type TodoLists } from './service/todo.model';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +12,16 @@ export class AppComponent {
 
   // Service注入
   constructor(private todoService: TodoService) {}
+
   // openDialogの値を取得
   get openDialog(): boolean {
     return this.todoService.openDialog;
   }
   createTodo() {
     this.todoService.openDialog = true;
+  }
+
+  get todoLists(): TodoLists {
+    return this.todoService.todoLists;
   }
 }
