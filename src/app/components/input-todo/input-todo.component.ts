@@ -24,7 +24,17 @@ export class InputTodoComponent {
   inputTitle = '';
   inputDescription = '';
 
-  saveTodo(id: number, inputTitle: string, inputDescription: string) {
+  saveTodo(inputTitle: string, inputDescription: string) {
+    // id作る。
+    let id = 0;
+    this.todoService.todoLists.forEach((list) => {
+      list.todos.forEach((todo) => {
+        if (todo.id >= id) {
+          id = todo.id + 1;
+        }
+      });
+    });
+
     const newTodo: Todo = {
       id: id,
       title: inputTitle,
