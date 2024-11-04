@@ -7,16 +7,24 @@ import { TodoService } from '../../service/todo.service';
   styleUrl: './todo-list.component.css',
 })
 export class TodoListComponent {
+  constructor(private todoService: TodoService) {}
   @Input({ required: true }) listId!: number;
 
-  constructor(private todoService: TodoService) {}
-  addTodo() {
-    this.todoService.openDialog = true;
-  }
+  // Render
   get todoList() {
     return this.todoService.todoLists.find(
       (todoList) => todoList.listId === this.listId
     );
+  }
+
+  // Input用
+  get openDialog() {
+    return this.todoService.openDialog;
+  }
+  addTodo() {
+    this.todoService.openDialog = true;
+    //
+    this.todoService.currentListId = this.listId;
   }
 
   // Console.log用

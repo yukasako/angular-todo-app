@@ -6,4 +6,7 @@
     }
   </ul>
   <button class="addTodoBtn" (click)="addTodo()">Add Todos</button>
+  @if(openDialog){
+  <app-input-todo></app-input-todo>
+  }
 </div>

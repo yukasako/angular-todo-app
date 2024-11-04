@@ -1,4 +1,4 @@
-<div class="backdrop" (click)="toggleDialog()"></div>
+<div class="backdrop" (click)="closeDialog()"></div>
 <dialog open>
   <form>
     <div class="input">
@@ -14,6 +14,8 @@
         [(ngModel)]="inputDescription"
       ></textarea>
     </div>
-    <button (click)="toggleDialog()">Close</button>
+    <p>{{ currentListId }}</p>
+    <button (click)="closeDialog()">Close</button>
+    <button (click)="saveTodo()">Save</button>
   </form>
 </dialog>
