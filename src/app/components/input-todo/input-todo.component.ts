@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { TodoService } from '../../service/todo.service';
+import { Todo } from '../../service/todo.model';
 
 @Component({
   selector: 'app-input-todo',
@@ -19,8 +20,24 @@ export class InputTodoComponent {
   get currentListId() {
     return this.todoService.currentListId;
   }
+
   inputTitle = '';
   inputDescription = '';
 
-  saveTodo() {}
+  saveTodo(id: number, inputTitle: string, inputDescription: string) {
+    const newTodo: Todo = {
+      id: id,
+      title: inputTitle,
+      description: inputDescription,
+      listId: this.currentListId,
+    };
+    console.log(newTodo);
+
+    // 該当リストを探し、新しいTodoを追加
+    this.todoService.todoLists
+      .find((list) => list.listId === this.currentListId)
+      ?.todos.push(newTodo);
+
+    this.closeDialog();
+  }
 }
