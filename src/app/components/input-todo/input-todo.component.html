@@ -3,7 +3,13 @@
   <form>
     <div class="input">
       <label for="title">Todo Title</label>
-      <input type="text" id="title" name="title" [(ngModel)]="inputTitle" />
+      <input
+        type="text"
+        id="title"
+        name="title"
+        [(ngModel)]="inputTitle"
+        placeholder="{{ inputTitle }}"
+      />
     </div>
     <div class="input">
       <label for="summary">Descriptions</label>
@@ -12,10 +18,17 @@
         rows="5"
         name="summary"
         [(ngModel)]="inputDescription"
+        placeholder="{{ inputDescription }}"
       ></textarea>
     </div>
     <p>{{ currentListId }}</p>
     <button (click)="closeDialog()">Close</button>
-    <button (click)="saveTodo(inputTitle, inputDescription)">Save</button>
+    @if(action === 'create'){
+    <button (click)="createTodo(inputTitle, inputDescription)">
+      Create Todo
+    </button>
+    }@else if (action === 'edit') {
+    <button (click)="editTodo()">Edit Todo</button>
+    }
   </form>
 </dialog>

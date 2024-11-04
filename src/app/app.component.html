@@ -8,10 +8,10 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <main>
-  <button class="createTodoBtn" (click)="createTodo()">Create Todo List</button>
+  <button class="createTodoBtn" (click)="createList()">Create Todo List</button>
   <ul class="todoLists">
     @for (todoList of todoLists; track $index) {
-    <app-todo-list [listId]="todoList.listId"></app-todo-list>
+    <app-todo-list [todoList]="todoList"></app-todo-list>
     }
   </ul>
   <!-- @if(openDialog){

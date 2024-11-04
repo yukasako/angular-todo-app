@@ -12,19 +12,28 @@ import { Todo } from '../../service/todo.model';
 export class InputTodoComponent {
   constructor(private todoService: TodoService) {}
 
+  inputTitle = '';
+  inputDescription = '';
+
+  // マウント時のtodoをチェックし代入
+  ngOnInit() {
+    this.inputTitle = this.todoService.currentTodo.title;
+    this.inputDescription = this.todoService.currentTodo.description;
+  }
+
+  get action() {
+    return this.todoService.action;
+  }
+
   closeDialog() {
     this.todoService.openDialog = false;
   }
 
-  // 追加するリストを取得
+  // 追加するリストを取得し、そこへ新しいtodoを作成。
   get currentListId() {
     return this.todoService.currentListId;
   }
-
-  inputTitle = '';
-  inputDescription = '';
-
-  saveTodo(inputTitle: string, inputDescription: string) {
+  createTodo(inputTitle: string, inputDescription: string) {
     // id作る。
     let id = 0;
     this.todoService.todoLists.forEach((list) => {
@@ -50,4 +59,6 @@ export class InputTodoComponent {
 
     this.closeDialog();
   }
+
+  editTodo() {}
 }

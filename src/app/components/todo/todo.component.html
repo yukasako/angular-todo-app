@@ -1,1 +1,4 @@
-<button (click)="editTodo()" class="todoTitle">{{ currentTodo?.title }}</button>
+<button (click)="editTodo()" class="todoTitle">{{ todo.title }}</button>
+@if(openDialog){
+<app-input-todo></app-input-todo>
+}
