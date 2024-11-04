@@ -1,7 +1,7 @@
 export type Todo = {
   id: number;
   title: string;
-  description?: string;
+  description: string;
   listId: number;
 };
 
