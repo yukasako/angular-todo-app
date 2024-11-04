@@ -8,8 +8,7 @@ export class TodoService {
 
   // Dialogの開閉
   openDialog = false;
-
-  test = 'test';
+  currentListId = 0;
 
   public todoLists = [
     {
@@ -32,6 +31,24 @@ export class TodoService {
     },
     {
       listId: 2,
+      listName: 'Doing',
+      todos: [
+        {
+          id: 3,
+          title: '3- Todo Title',
+          description: 'Todo Description',
+          listId: 1,
+        },
+        {
+          id: 4,
+          title: '4- Todo Title',
+          description: '2- Todo Description',
+          listId: 1,
+        },
+      ],
+    },
+    {
+      listId: 3,
       listName: 'Doing',
       todos: [
         {

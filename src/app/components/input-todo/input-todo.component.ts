@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { TodoService } from '../../service/todo.service';
 
@@ -11,10 +11,16 @@ import { TodoService } from '../../service/todo.service';
 export class InputTodoComponent {
   constructor(private todoService: TodoService) {}
 
-  toggleDialog() {
-    this.todoService.openDialog = !this.todoService.openDialog;
+  closeDialog() {
+    this.todoService.openDialog = false;
   }
 
+  // 追加するリストを取得
+  get currentListId() {
+    return this.todoService.currentListId;
+  }
   inputTitle = '';
   inputDescription = '';
+
+  saveTodo() {}
 }
