@@ -24,15 +24,15 @@
         placeholder="{{ inputDescription }}"
       ></textarea>
     </div>
-    <select name="todoList" id="todoList" (change)="selectList()">
-      @for (todoList of todoLists; track $index) { @if(todoList.listId ===
-      currentList.listId){
-      <option value="{{ todoList }}" selected>
-        {{ todoList.listName }}
-      </option>
-      }@else {
-      <option value="{{ todoList }}">{{ todoList.listName }}</option>
-      } }
+    <select
+      name="todoList"
+      id="todoList"
+      [(ngModel)]="selectedListId"
+      (change)="selectList()"
+    >
+      @for (todoList of todoLists; track $index) {
+      <option value="{{ todoList.listId }}">{{ todoList.listName }}</option>
+      }
     </select>
     @if(action === 'create'){
     <button (click)="createTodo(inputTitle, inputDescription)">

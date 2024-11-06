@@ -13,11 +13,12 @@ export class TodoComponent {
   @Input({ required: true }) todo!: Todo;
 
   editTodo() {
-    // 開閉
+    // 開閉し、編集モードに（Inputのレンダリングに関わる）
     this.todoService.openDialog = true;
-    // 編集したいtodoの情報を代入
     this.todoService.action = 'edit';
+    // 編集したいtodoの情報を代入
     this.todoService.currentTodo = this.todo;
+    // 編集対象のListをtodoのListIdから取得し、CurrentListへ。
     const currentList = this.todoService.todoLists.find(
       (list) => list.listId === this.todo.listId
     );

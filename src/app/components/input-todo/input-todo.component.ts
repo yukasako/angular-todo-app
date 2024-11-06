@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 import { TodoService } from '../../service/todo.service';
-import { Todo } from '../../service/todo.model';
+import { Todo, TodoList } from '../../service/todo.model';
 
 @Component({
   selector: 'app-input-todo',
@@ -12,12 +12,15 @@ import { Todo } from '../../service/todo.model';
 export class InputTodoComponent {
   constructor(private todoService: TodoService) {}
 
-  // マウント時のtodoをチェックし代入
+  // マウント時のtodoをチェックし双方バインディングへ代入
   inputTitle = '';
   inputDescription = '';
+  selectedListId = 0;
   ngOnInit() {
     this.inputTitle = this.todoService.currentTodo.title;
     this.inputDescription = this.todoService.currentTodo.description;
+    // どのListに所属するかもここで代入。
+    this.selectedListId = this.todoService.currentList.listId;
   }
 
   get action() {
@@ -31,7 +34,14 @@ export class InputTodoComponent {
     this.todoService.openDialog = false;
   }
 
-  selectList() {}
+  selectList() {
+    const selectedList = this.todoLists.find(
+      (list) => list.listId === Number(this.selectedListId)
+    );
+    if (selectedList) {
+      this.todoService.currentList = selectedList;
+    }
+  }
 
   // 追加するリストを取得し、そこへ新しいtodoを作成。
   get currentList() {

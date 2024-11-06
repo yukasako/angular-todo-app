@@ -6,26 +6,6 @@ import { Todo, TodoList } from './todo.model';
 })
 export class TodoService {
   constructor() {}
-
-  // Dialogの開閉
-  openDialog = false;
-
-  // EditかCreateか
-  action = 'create';
-
-  //　現在値の受け渡しをここで。（@Inputだと同期が取れず挙動がおかしかった）
-  currentList: TodoList = {
-    listId: 0,
-    listName: '',
-  };
-
-  currentTodo: Todo = {
-    id: 0,
-    title: '',
-    description: '',
-    listId: 0,
-  };
-
   public todos: Todo[] = [
     {
       id: 1,
@@ -64,7 +44,6 @@ export class TodoService {
       listId: 3,
     },
   ];
-
   public todoLists: TodoList[] = [
     {
       listId: 1,
@@ -79,4 +58,22 @@ export class TodoService {
       listName: 'Done',
     },
   ];
+
+  // Dialogの開閉
+  openDialog = false;
+
+  // EditかCreateか
+  action = 'create';
+
+  //　現在値の受け渡しをここで。（@Inputだと同期が取れず挙動がおかしかった）
+  currentList: TodoList = {
+    listId: 0,
+    listName: '',
+  };
+  currentTodo: Todo = {
+    id: 0,
+    title: '',
+    description: '',
+    listId: 0,
+  };
 }
