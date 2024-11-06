@@ -2,6 +2,9 @@
 <dialog open>
   <form>
     <div class="input">
+      <div class="closeBtndiv">
+        <button (click)="closeDialog()">X</button>
+      </div>
       <label for="title">Todo Title</label>
       <input
         type="text"
@@ -21,8 +24,16 @@
         placeholder="{{ inputDescription }}"
       ></textarea>
     </div>
-    <p>{{ currentListId }}</p>
-    <button (click)="closeDialog()">Close</button>
+    <select
+      name="todoList"
+      id="todoList"
+      [(ngModel)]="selectedListId"
+      (change)="selectList()"
+    >
+      @for (todoList of todoLists; track $index) {
+      <option value="{{ todoList.listId }}">{{ todoList.listName }}</option>
+      }
+    </select>
     @if(action === 'create'){
     <button (click)="createTodo(inputTitle, inputDescription)">
       Create Todo

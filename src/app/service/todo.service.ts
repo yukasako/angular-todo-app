@@ -1,28 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Todo } from './todo.model';
+import { Todo, TodoList } from './todo.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoService {
   constructor() {}
-
-  // Dialogの開閉
-  openDialog = false;
-
-  // EditかCreateか
-  action = 'create';
-
-  //　現在値の受け渡しをここで。（@Inputだと同期が取れず挙動がおかしかった）
-  currentListId = 0;
-  currentTodo: Todo = {
-    id: 0,
-    title: '',
-    description: '',
-    listId: 0,
-  };
-
-  public todos = [
+  public todos: Todo[] = [
     {
       id: 1,
       title: 'Todo Title',
@@ -60,8 +44,7 @@ export class TodoService {
       listId: 3,
     },
   ];
-
-  public todoLists = [
+  public todoLists: TodoList[] = [
     {
       listId: 1,
       listName: 'Todo',
@@ -72,7 +55,25 @@ export class TodoService {
     },
     {
       listId: 3,
-      listName: 'Doing',
+      listName: 'Done',
     },
   ];
+
+  //　現在値の受け渡しをここで。（@Inputだと同期が取れず挙動がおかしかった）
+  currentList: TodoList = {
+    listId: 0,
+    listName: '',
+  };
+  currentTodo: Todo = {
+    id: 0,
+    title: '',
+    description: '',
+    listId: 0,
+  };
+
+  // Dialogの開閉
+  openDialog = false;
+
+  // EditかCreateか
+  action = 'create';
 }
