@@ -61,10 +61,23 @@ export class InputTodoComponent {
       description: this.inputDescription,
       listId: this.currentListId,
     };
-    // 次回はここから！
-    // let targetTodo = this.todoService.todoLists
-    //   .find((list) => list.listId === this.currentListId)
-    //   ?.todos.find((todo) => todo.id === this.todoService.currentTodo.id);
-    // targetTodo = editedTodo;
+
+    const updatedTodos = this.todoService.todos.map((todo) => {
+      if (todo.id === this.todoService.currentTodo.id) {
+        return { ...todo, ...editedTodo }; // スプレッド構文: 同じプロパティ名があった場合、後から展開したオブジェクトの値で上書き。
+      }
+      return todo;
+    });
+
+    this.todoService.todos = updatedTodos;
+    this.closeDialog();
+  }
+
+  deleteTodo() {
+    const updatedTodos = this.todoService.todos.filter(
+      (todo) => todo.id !== this.todoService.currentTodo.id
+    );
+    this.todoService.todos = updatedTodos;
+    this.closeDialog();
   }
 }
