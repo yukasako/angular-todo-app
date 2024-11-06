@@ -5,10 +5,15 @@ export type Todo = {
   listId: number;
 };
 
+// export type TodoList = {
+//   listId: number;
+//   listName: string;
+//   todos?: Todo[];
+// };
+
 export type TodoList = {
   listId: number;
   listName: string;
-  todos?: Todo[];
 };
 
 export type TodoLists = TodoList[];

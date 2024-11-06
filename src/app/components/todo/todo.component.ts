@@ -1,6 +1,6 @@
-import { Component, CSP_NONCE, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TodoService } from '../../service/todo.service';
-import { Todo } from '../../service/todo.model';
+import { Todo, TodoList } from '../../service/todo.model';
 
 @Component({
   selector: 'app-todo',
@@ -17,8 +17,13 @@ export class TodoComponent {
     this.todoService.openDialog = true;
     // 編集したいtodoの情報を代入
     this.todoService.action = 'edit';
-    this.todoService.currentListId = this.todo.listId;
     this.todoService.currentTodo = this.todo;
+    const currentList = this.todoService.todoLists.find(
+      (list) => list.listId === this.todo.listId
+    );
+    if (currentList) {
+      this.todoService.currentList = currentList;
+    }
   }
 
   get openDialog() {

@@ -14,8 +14,8 @@ export class TodoListComponent {
   get openDialog() {
     return this.todoService.openDialog;
   }
-  get currentListId() {
-    return this.todoService.currentListId;
+  get currentList() {
+    return this.todoService.currentList;
   }
   get todosOnThisList() {
     const allTodos = this.todoService.todos;
@@ -26,7 +26,7 @@ export class TodoListComponent {
     // 開閉
     this.todoService.openDialog = true;
     // 該当リスト指定
-    this.todoService.currentListId = this.todoList.listId;
+    this.todoService.currentList = this.todoList;
     // currentTodoをダミーに戻す
     this.todoService.currentTodo = {
       id: 0,

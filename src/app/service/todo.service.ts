@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Todo } from './todo.model';
+import { Todo, TodoList } from './todo.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,11 @@ export class TodoService {
   action = 'create';
 
   //　現在値の受け渡しをここで。（@Inputだと同期が取れず挙動がおかしかった）
-  currentListId = 0;
+  currentList: TodoList = {
+    listId: 0,
+    listName: '',
+  };
+
   currentTodo: Todo = {
     id: 0,
     title: '',
@@ -22,7 +26,7 @@ export class TodoService {
     listId: 0,
   };
 
-  public todos = [
+  public todos: Todo[] = [
     {
       id: 1,
       title: 'Todo Title',
@@ -61,7 +65,7 @@ export class TodoService {
     },
   ];
 
-  public todoLists = [
+  public todoLists: TodoList[] = [
     {
       listId: 1,
       listName: 'Todo',
@@ -72,7 +76,7 @@ export class TodoService {
     },
     {
       listId: 3,
-      listName: 'Doing',
+      listName: 'Done',
     },
   ];
 }
