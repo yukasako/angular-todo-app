@@ -1,12 +1,12 @@
 <div class="todoList">
-  <p class="listTitle">{{ todoList?.listName }}</p>
+  <p class="listTitle">{{ todoList.listName }}</p>
   <ul class="renderTodos">
-    @for (todo of todoList?.todos; track $index) {
-    <app-todo [id]="todo.id" [listId]="listId"></app-todo>
+    @for (todo of todoList.todos; track $index) {
+    <app-todo [todo]="todo"></app-todo>
     }
   </ul>
   <button class="addTodoBtn" (click)="addTodo()">Add Todos</button>
-  @if(openDialog){
-  <app-input-todo></app-input-todo>
-  }
+  <div *ngIf="openDialog">
+    <app-input-todo></app-input-todo>
+  </div>
 </div>

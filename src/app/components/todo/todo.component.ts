@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, CSP_NONCE, Input } from '@angular/core';
 import { TodoService } from '../../service/todo.service';
+import { Todo } from '../../service/todo.model';
 
 @Component({
   selector: 'app-todo',
@@ -7,19 +8,20 @@ import { TodoService } from '../../service/todo.service';
   styleUrl: './todo.component.css',
 })
 export class TodoComponent {
-  @Input({ required: true }) id!: number;
-  @Input({ required: true }) listId!: number;
-
   // Service注入
   constructor(private todoService: TodoService) {}
+  @Input({ required: true }) todo!: Todo;
+
   editTodo() {
+    // 開閉
     this.todoService.openDialog = true;
+    // 編集したいtodoの情報を代入
+    this.todoService.action = 'edit';
+    this.todoService.currentListId = this.todo.listId;
+    this.todoService.currentTodo = this.todo;
   }
 
-  get currentTodo() {
-    const todoList = this.todoService.todoLists.find(
-      (todoList) => todoList.listId === this.listId
-    );
-    return todoList?.todos.find((todo) => todo.id === this.id);
+  get openDialog() {
+    return this.todoService.openDialog;
   }
 }
