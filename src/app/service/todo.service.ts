@@ -59,12 +59,6 @@ export class TodoService {
     },
   ];
 
-  // Dialogの開閉
-  openDialog = false;
-
-  // EditかCreateか
-  action = 'create';
-
   //　現在値の受け渡しをここで。（@Inputだと同期が取れず挙動がおかしかった）
   currentList: TodoList = {
     listId: 0,
@@ -76,4 +70,10 @@ export class TodoService {
     description: '',
     listId: 0,
   };
+
+  // Dialogの開閉
+  openDialog = false;
+
+  // EditかCreateか
+  action = 'create';
 }
