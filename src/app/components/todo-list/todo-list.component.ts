@@ -11,12 +11,15 @@ export class TodoListComponent {
   constructor(private todoService: TodoService) {}
   @Input({ required: true }) todoList!: TodoList;
 
-  // Input用
   get openDialog() {
     return this.todoService.openDialog;
   }
   get currentListId() {
     return this.todoService.currentListId;
+  }
+  get todosOnThisList() {
+    const allTodos = this.todoService.todos;
+    return allTodos.filter((todo) => todo.listId === this.todoList.listId);
   }
 
   addTodo() {

@@ -36,12 +36,10 @@ export class InputTodoComponent {
   createTodo(inputTitle: string, inputDescription: string) {
     // id作る。
     let id = 0;
-    this.todoService.todoLists.forEach((list) => {
-      list.todos.forEach((todo) => {
-        if (todo.id >= id) {
-          id = todo.id + 1;
-        }
-      });
+    this.todoService.todos.forEach((todo) => {
+      if (todo.id >= id) {
+        id = todo.id + 1;
+      }
     });
 
     const newTodo: Todo = {
@@ -52,11 +50,7 @@ export class InputTodoComponent {
     };
     console.log(newTodo);
 
-    // 該当リストを探し、新しいTodoを追加
-    this.todoService.todoLists
-      .find((list) => list.listId === this.currentListId)
-      ?.todos.push(newTodo);
-
+    this.todoService.todos.push(newTodo);
     this.closeDialog();
   }
 

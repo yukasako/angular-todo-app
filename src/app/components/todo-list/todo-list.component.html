@@ -1,7 +1,7 @@
 <div class="todoList">
   <p class="listTitle">{{ todoList.listName }}</p>
   <ul class="renderTodos">
-    @for (todo of todoList.todos; track $index) {
+    @for (todo of todosOnThisList; track $index) {
     <app-todo [todo]="todo"></app-todo>
     }
   </ul>
