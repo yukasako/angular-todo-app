@@ -60,5 +60,17 @@ export class InputTodoComponent {
     this.closeDialog();
   }
 
-  editTodo() {}
+  editTodo() {
+    const editedTodo: Todo = {
+      id: this.todoService.currentTodo.id,
+      title: this.inputTitle,
+      description: this.inputDescription,
+      listId: this.currentListId,
+    };
+    // 次回はここから！
+    // let targetTodo = this.todoService.todoLists
+    //   .find((list) => list.listId === this.currentListId)
+    //   ?.todos.find((todo) => todo.id === this.todoService.currentTodo.id);
+    // targetTodo = editedTodo;
+  }
 }
