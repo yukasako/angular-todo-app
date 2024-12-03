@@ -37,4 +37,18 @@ export class TodoListComponent {
     // action変更
     this.todoService.action = 'create';
   }
+
+  deleteList() {
+    // Listを消す
+    const updatedLists = this.todoService.todoLists.filter(
+      (list) => list.listId !== this.todoList.listId
+    );
+    this.todoService.todoLists = updatedLists;
+    // Listの中身も消す。
+    const updatedTodos = this.todoService.todos.filter(
+      (todo) => todo.listId !== this.todoList.listId
+    );
+    this.todoService.todos = updatedTodos;
+    this.todoService.setLocalStorage();
+  }
 }

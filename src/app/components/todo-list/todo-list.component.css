@@ -1,4 +1,4 @@
-div.todoList {
+.todoList {
   width: 250px;
   background-color: var(--color-2);
 
@@ -13,18 +13,28 @@ div.todoList {
   border: none;
 }
 
-p.listTitle {
+.listTitle {
+  width: 90%;
   font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-/* div.renderTodos {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-} */
+.deleteBtn {
+  width: 20px;
+  height: 20px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--color-1);
+  color: var(--color-3);
+}
 
-button.addTodoBtn {
+.renderTodos {
+  width: 100%;
+}
+
+.addTodoBtn {
   width: 100%;
   background-color: var(--color-4);
   color: white;

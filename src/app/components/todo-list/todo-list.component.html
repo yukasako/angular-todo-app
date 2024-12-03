@@ -1,5 +1,8 @@
 <div class="todoList">
-  <p class="listTitle">{{ todoList.listName }}</p>
+  <div class="listTitle">
+    <span>{{ todoList.listName }}</span>
+    <button class="deleteBtn" (click)="deleteList()">x</button>
+  </div>
   <ul class="renderTodos">
     @for (todo of todosOnThisList; track $index) {
     <app-todo [todo]="todo"></app-todo>

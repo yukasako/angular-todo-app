@@ -14,9 +14,10 @@
     <app-todo-list [todoList]="todoList"></app-todo-list>
     }
   </ul>
-  <!-- @if(openDialog){
-  <app-input-todo></app-input-todo>
-  } -->
+  <!-- List作成 -->
+  @if(openTodoListDialog){
+  <app-input-todo-list (close)="closeDialog()"></app-input-todo-list>
+  }
 </main>
 
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->

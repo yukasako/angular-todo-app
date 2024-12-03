@@ -51,10 +51,12 @@ export class InputTodoComponent {
 
   createTodo(inputTitle: string, inputDescription: string) {
     // id作る。
-    let id = 0;
+    let id = 1;
     this.todoService.todos.forEach((todo) => {
       if (todo.id >= id) {
         id = todo.id + 1;
+      } else {
+        id = 1;
       }
     });
 

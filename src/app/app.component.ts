@@ -8,25 +8,25 @@ import { type TodoLists } from './service/todo.model';
   styleUrl: './app.component.css',
 })
 export class AppComponent {
-  title = 'angular-todo-app';
-
   // Service注入
   constructor(private todoService: TodoService) {}
 
-  // openDialogの値を取得
-  get openDialog(): boolean {
-    return this.todoService.openDialog;
-  }
-  createList() {
-    this.todoService.openDialog = true;
-  }
-
-  get todoLists(): TodoLists {
-    return this.todoService.todoLists;
-  }
+  title = 'angular-todo-app';
 
   // マウント時にLocalStorageから値を取得
   ngOnInit(): void {
     this.todoService.getLocalStorage();
+  }
+  get todoLists(): TodoLists {
+    return this.todoService.todoLists;
+  }
+
+  openTodoListDialog = false;
+  createList() {
+    this.openTodoListDialog = true;
+  }
+  // Outputで子から受け取ったイベント
+  closeDialog() {
+    this.openTodoListDialog = false;
   }
 }
