@@ -28,18 +28,18 @@ export class TodoService {
     // },
   ];
   public todoLists: TodoList[] = [
-    {
-      listId: 1,
-      listName: 'Todo',
-    },
-    {
-      listId: 2,
-      listName: 'Doing',
-    },
-    {
-      listId: 3,
-      listName: 'Done',
-    },
+    // {
+    //   listId: 1,
+    //   listName: 'Todo',
+    // },
+    // {
+    //   listId: 2,
+    //   listName: 'Doing',
+    // },
+    // {
+    //   listId: 3,
+    //   listName: 'Done',
+    // },
   ];
 
   //　現在値の受け渡しをここで。（@Inputだと同期が取れず挙動がおかしかった）
@@ -63,11 +63,16 @@ export class TodoService {
   // Local Storageに保存
   getLocalStorage() {
     const todos = localStorage.getItem(`todos`);
+    const todoLists = localStorage.getItem(`todoLists`);
     if (todos) {
       this.todos = JSON.parse(todos);
+    }
+    if (todoLists) {
+      this.todoLists = JSON.parse(todoLists);
     }
   }
   setLocalStorage() {
     localStorage.setItem(`todos`, JSON.stringify(this.todos));
+    localStorage.setItem(`todoLists`, JSON.stringify(this.todoLists));
   }
 }
