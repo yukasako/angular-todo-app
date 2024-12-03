@@ -1,0 +1,13 @@
+<div class="backdrop" (click)="closeDialog()"></div>
+<dialog open>
+  <form>
+    <div class="input">
+      <div class="closeBtndiv">
+        <button (click)="closeDialog()">X</button>
+      </div>
+      <label for="title">List title</label>
+      <input type="text" id="title" name="title" [(ngModel)]="inputListName" />
+    </div>
+    <button (click)="createTodoList(inputListName)">Create Todo List</button>
+  </form>
+</dialog>

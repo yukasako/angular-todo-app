@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { TodoComponent } from './components/todo/todo.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { InputTodoComponent } from './components/input-todo/input-todo.component';
+import { InputTodoListComponent } from './components/input-todo-list/input-todo-list.component';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { InputTodoComponent } from './components/input-todo/input-todo.component
     TodoComponent,
     TodoListComponent,
     InputTodoComponent,
+    InputTodoListComponent,
   ],
   bootstrap: [AppComponent],
   imports: [BrowserModule, FormsModule],

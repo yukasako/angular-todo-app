@@ -1,19 +1,21 @@
 main {
   width: 100vw;
-  background-color: aquamarine;
+  height: 100vh;
+  background-color: var(--color-1);
 }
 
 .todoLists {
   width: 100vw;
-  background-color: bisque;
+  background-color: var(--color-1);
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .createTodoBtn {
   width: 250px;
-  background-color: rgb(149, 178, 168);
+  background-color: var(--color-4);
+  color: white;
   margin: 20px;
   padding: 12px;
   border-radius: 12px;

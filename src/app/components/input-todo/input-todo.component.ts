@@ -12,7 +12,7 @@ import { Todo, TodoList } from '../../service/todo.model';
 export class InputTodoComponent {
   constructor(private todoService: TodoService) {}
 
-  // マウント時のtodoをチェックし双方バインディングへ代入
+  // マウント時のtodoをngOnInit()でチェックし双方バインディングへ代入
   inputTitle = '';
   inputDescription = '';
   selectedListId = 0;
@@ -35,6 +35,7 @@ export class InputTodoComponent {
   }
 
   selectList() {
+    // 選択したListIdをもとにCurrentListを更新し、レンダーに反映。
     const selectedList = this.todoLists.find(
       (list) => list.listId === Number(this.selectedListId)
     );
@@ -50,10 +51,12 @@ export class InputTodoComponent {
 
   createTodo(inputTitle: string, inputDescription: string) {
     // id作る。
-    let id = 0;
+    let id = 1;
     this.todoService.todos.forEach((todo) => {
       if (todo.id >= id) {
         id = todo.id + 1;
+      } else {
+        id = 1;
       }
     });
 
@@ -67,6 +70,9 @@ export class InputTodoComponent {
 
     this.todoService.todos.push(newTodo);
     this.closeDialog();
+
+    // Local Storageに保存
+    this.todoService.setLocalStorage();
   }
 
   editTodo() {
@@ -86,6 +92,9 @@ export class InputTodoComponent {
 
     this.todoService.todos = updatedTodos;
     this.closeDialog();
+
+    // Local Storageに保存
+    this.todoService.setLocalStorage();
   }
 
   deleteTodo() {
@@ -94,5 +103,8 @@ export class InputTodoComponent {
     );
     this.todoService.todos = updatedTodos;
     this.closeDialog();
+
+    // Local Storageに保存
+    this.todoService.setLocalStorage();
   }
 }
