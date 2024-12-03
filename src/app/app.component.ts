@@ -24,4 +24,9 @@ export class AppComponent {
   get todoLists(): TodoLists {
     return this.todoService.todoLists;
   }
+
+  // マウント時にLocalStorageから値を取得
+  ngOnInit(): void {
+    this.todoService.getLocalStorage();
+  }
 }

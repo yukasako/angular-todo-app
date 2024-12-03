@@ -4,3 +4,11 @@
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --color-1: #e3f8f0;
+  --color-2: #b9e5e8;
+  --color-3: #87c4e8;
+  --color-4: #4a628a;
+  --color-5: rgb(36, 37, 39);
+}
